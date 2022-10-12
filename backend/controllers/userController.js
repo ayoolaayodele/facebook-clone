@@ -15,7 +15,6 @@ exports.register = async (req, res) => {
       last_name,
       email,
       password,
-      username,
       bYear,
       bMonth,
       bDay,
