@@ -9,12 +9,6 @@ function LoginInput({ placeholder, bottom, ...props }) {
     query: "(min-width: 850px)",
   });
 
-  const view1050 = useMediaQuery({
-    query: "(max-width: 1050px)",
-  });
-
-  console.log(view1050);
-
   return (
     <div className="input_wrap">
       {meta.touched && meta.error && !bottom && (
