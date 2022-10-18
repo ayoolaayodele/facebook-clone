@@ -747,3 +747,12 @@
   width: 21px;
   height: 21px;
 }
+.compact_icon {
+  background-image: url(../../../public/icons/icons30.png);
+  background-position: 0 -130px;
+  background-size: auto;
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+  display: inline-block;
+}
