@@ -9,7 +9,6 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-import { LOGIN } from "../../actions";
 function RegisterForm({ setVisible }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -104,7 +103,7 @@ function RegisterForm({ setVisible }) {
       );
       const { message, ...rest } = data;
       setTimeout(() => {
-        dispatch({ type: LOGIN, payload: rest });
+        dispatch({ type: "LOGIN", payload: rest });
         Cookies.set("user", JSON.stringify(rest));
         navigate("/");
       }, 2000);

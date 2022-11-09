@@ -32,7 +32,7 @@ function LeftHome({ user }) {
             return <LeftLink {...item} key={i} />;
           })}
           <div
-            className="left_link hover1"
+            className="left_link hover2"
             onClick={() => setShowVisible(false)}
           >
             <div className="small_circle rotate360">

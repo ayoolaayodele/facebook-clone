@@ -8,19 +8,21 @@ import Home from "./pages/home";
 import Activate from "./pages/home/activate";
 import Login from "./pages/login";
 import Profile from "./pages/profile";
+import Friends from "./pages/friends/index";
 import Reset from "./pages/reset";
 import LoggedInRoutes from "./routes/LoggedInRoutes";
 import NotLoggedInRoutes from "./routes/NotLoggedInRoutes";
 
 function App() {
   const [visible, setVisible] = useState(false);
-  const { user } = useSelector((user) => ({ ...user }));
+  const { user, darkTheme } = useSelector((user) => ({ ...user }));
 
   const [{ loading, error, posts }, dispatch] = useReducer(postsReducer, {
     loading: false,
     posts: [],
     error: "",
   });
+
   useEffect(() => {
     getAllPosts();
   }, []);
@@ -30,7 +32,7 @@ function App() {
         type: "POSTS_REQUEST",
       });
       const { data } = await axios.get(
-        `${process.env.REACT_APP_BACKEND_URL}/getAllposts`,
+        `${process.env.REACT_APP_BACKEND_URL}/getAllPosts`,
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
@@ -50,14 +52,55 @@ function App() {
   };
 
   return (
-    <div>
-      {visible && <CreatePostPopup user={user} setVisible={setVisible} />}
+    <div className={darkTheme && "dark"}>
+      {visible && (
+        <CreatePostPopup
+          user={user}
+          setVisible={setVisible}
+          posts={posts}
+          dispatch={dispatch}
+        />
+      )}
       <Routes>
         <Route element={<LoggedInRoutes />}>
-          <Route path="/profile" element={<Profile />} exact />
+          <Route
+            path="/profile"
+            element={
+              <Profile setVisible={setVisible} getAllPosts={getAllPosts} />
+            }
+            exact
+          />
+          <Route
+            path="/profile/:username"
+            element={
+              <Profile setVisible={setVisible} getAllPosts={getAllPosts} />
+            }
+            exact
+          />
+          <Route
+            path="/friends"
+            element={
+              <Friends setVisible={setVisible} getAllPosts={getAllPosts} />
+            }
+            exact
+          />
+          <Route
+            path="/friends/:type"
+            element={
+              <Friends setVisible={setVisible} getAllPosts={getAllPosts} />
+            }
+            exact
+          />
           <Route
             path="/"
-            element={<Home setVisible={setVisible} posts={posts} />}
+            element={
+              <Home
+                setVisible={setVisible}
+                posts={posts}
+                loading={loading}
+                getAllPosts={getAllPosts}
+              />
+            }
             exact
           />
           <Route path="/activate/:token" element={<Activate />} exact />

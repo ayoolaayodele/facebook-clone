@@ -1,4 +1,3 @@
-import { LOGIN, LOGOUT, VERIFY } from "../actions";
 import Cookies from "js-cookie";
 
 export function userReducer(
@@ -6,12 +5,14 @@ export function userReducer(
   action
 ) {
   switch (action.type) {
-    case LOGIN:
+    case "LOGIN":
       return action.payload;
-    case LOGOUT:
+    case "LOGOUT":
       return null;
-    case VERIFY:
+    case "VERIFY":
       return { ...state, verified: action.payload };
+    case "UPDATEPICTURE":
+      return { ...state, picture: action.payload };
     default:
       return state;
   }

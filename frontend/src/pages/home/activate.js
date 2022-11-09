@@ -10,7 +10,6 @@ import ActivateForm from "./ActivateForm";
 import "./style.css";
 import axios from "axios";
 import Cookies from "js-cookie";
-import { VERIFY } from "../../actions";
 export default function Activate() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -37,7 +36,7 @@ export default function Activate() {
       setSuccess(data.message);
       Cookies.set("user", JSON.stringify({ ...user, verified: true }));
       dispatch({
-        type: VERIFY,
+        type: "VERIFY",
         payload: true,
       });
 

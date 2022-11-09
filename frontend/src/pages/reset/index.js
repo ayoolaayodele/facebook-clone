@@ -1,7 +1,6 @@
 import Cookies from "js-cookie";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { LOGOUT } from "../../actions";
 import "./style.css";
 import { useState } from "react";
 import SearchAccount from "./SearchAccount";
@@ -26,7 +25,7 @@ export default function Reset() {
 
   const logout = function () {
     Cookies.set("user", "");
-    dispatch({ type: LOGOUT });
+    dispatch({ type: "LOGOUT" });
     navigate("/");
   };
 

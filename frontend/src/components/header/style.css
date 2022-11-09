@@ -10,7 +10,6 @@ header {
   grid-template-columns: repeat(3, 1fr);
   color: var(--color-primary);
 }
-
 /*---Header left-----*/
 .header_left {
   display: flex;
@@ -18,7 +17,6 @@ header {
   gap: 10px;
   padding: 5px 1rem;
 }
-
 .circle {
   width: 40px;
   height: 40px;
@@ -47,6 +45,7 @@ header {
 .search input::placeholder {
   transform: translateY(-1px);
 }
+/*---Header left-----*/
 
 /*---Header middle-----*/
 
@@ -56,19 +55,17 @@ header {
   gap: 14px;
   transform: translateX(3px);
 }
-
 .middle_icon {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 50px;
   width: 125px;
+  height: 50px;
   border-radius: 10px;
   cursor: pointer;
   transform: translateX(-2px);
 }
-
 .middle_icon:nth-child(2) {
   transform: translateX(-4px);
 }
@@ -81,7 +78,6 @@ header {
 .middle_icon:nth-child(5) {
   transform: translateX(-5px);
 }
-
 .active {
   border-bottom: 3px solid var(--blue-color);
   border-radius: 0;
@@ -91,7 +87,6 @@ header {
 .active svg {
   transform: translateY(1px) translateX(-1px);
 }
-
 .middle_notification {
   position: absolute;
   top: 3px;
@@ -102,7 +97,6 @@ header {
   font-size: 13px;
   color: #fff;
 }
-
 /*---Header middle-----*/
 
 /*---Header right-----*/
@@ -114,7 +108,6 @@ header {
   top: 50%;
   transform: translateY(-50%);
 }
-
 .profile_link {
   display: flex;
   align-items: center;
@@ -137,7 +130,6 @@ header {
 .profile_link span {
   margin-bottom: 3px;
 }
-
 .circle_icon {
   position: relative;
   height: 40px;
@@ -160,8 +152,9 @@ header {
   font-size: 13px;
   color: #fff;
 }
+/*---Header right-----*/
 
-/* Search Menu */
+/*---Search menu-----*/
 .search_area {
   position: absolute;
   align-items: flex-start;
@@ -178,7 +171,6 @@ header {
   max-height: 70vh;
   padding: 8px 16px 10px 6px;
 }
-
 .search_wrap {
   display: flex;
   align-items: center;
@@ -199,15 +191,12 @@ header {
 .search_area .search input::placeholder {
   transform: translateY(-2px);
 }
-
 .search_area .search input:focus::placeholder {
   transform: translateY(-1px);
 }
-
 .search_history {
   width: 100%;
 }
-
 .search_history_header {
   width: 100%;
   display: flex;
@@ -216,7 +205,6 @@ header {
   padding: 10px;
   font-size: 14px;
 }
-
 .search_history_header span {
   font-weight: 600;
   font-size: 16px;
@@ -225,7 +213,6 @@ header {
   cursor: pointer;
   color: var(--blue-color);
 }
-/* Search Menu */
 
 /*---Search menu-----*/
 /*---Search All Menu-----*/
@@ -359,7 +346,8 @@ header {
 }
 /*---Search All Menu-----*/
 
-/* User Menu */
+/*-------User menu----*/
+
 .mmenu {
   padding: 0 0.3rem;
   position: absolute;
@@ -372,7 +360,6 @@ header {
   user-select: none;
   padding: 10px;
 }
-
 .mmenu_header {
   display: flex;
   align-items: center;
@@ -380,7 +367,6 @@ header {
   border-radius: 10px;
   gap: 10px;
 }
-
 .mmenu_header img {
   width: 60px;
   height: 60px;
@@ -392,7 +378,6 @@ header {
   flex-direction: column;
   justify-content: center;
 }
-
 .mmenu_col span:first-of-type {
   color: var(--color-primary);
   font-weight: 600;
@@ -402,7 +387,6 @@ header {
 .mmenu_col span:last-of-type {
   font-size: 14px;
 }
-
 .mmenu_main {
   padding: 10px;
   margin-top: 5px;
@@ -423,7 +407,6 @@ header {
   font-size: 12px !important;
   color: var(--color-secondary);
 }
-
 .mmenu_item {
   position: relative;
   display: flex;
@@ -480,6 +463,43 @@ header {
 .absolute_wrap label input {
   width: 20px;
   height: 20px;
+}
+.search_user_item i {
+  position: absolute;
+  right: 10px;
+  transform: scale(0.6);
+}
+
+/*-------User menu----*/
+.search_results {
+  width: 100%;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+.search_history {
+  width: 100%;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+.search_user_item {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.search_user_item img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.search_user_item span {
+  font-weight: 600;
+  font-size: 14px;
 }
 
 /*---responsive----------*/

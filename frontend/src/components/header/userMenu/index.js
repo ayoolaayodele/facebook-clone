@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import HelpSupport from "./HelpSupport";
 import SettingsPrivacy from "./SettingsPrivacy";
 import DisplayAccessibility from "./DisplayAccessibility";
-import { LOGOUT } from "../../../actions";
 import { useDispatch } from "react-redux";
 import Cookies from "js-cookie";
 function UserMenu({ user }) {
@@ -14,7 +13,7 @@ function UserMenu({ user }) {
 
   const logout = function () {
     Cookies.set("user", "");
-    dispatch({ type: LOGOUT });
+    dispatch({ type: "LOGOUT" });
 
     navigate("/login");
   };

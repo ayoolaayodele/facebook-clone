@@ -22,7 +22,7 @@ import { useRef, useState } from "react";
 import AllMenu from "./AllMenu";
 import { useClickOutside } from "../../helpers/clickOutside";
 import UserMenu from "./userMenu";
-function Header() {
+function Header({ page, getAllPosts }) {
   const [showSeachMenu, setShowSeachMenu] = useState(false);
   const [showAllMenu, setShowAllMenu] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
@@ -57,14 +57,33 @@ function Header() {
         </div>
       </div>
       {showSeachMenu && (
-        <SearchMenu color={color} setShowSeachMenu={setShowSeachMenu} />
+        <SearchMenu
+          color={color}
+          setShowSeachMenu={setShowSeachMenu}
+          token={user.token}
+        />
       )}
       <div className="header_middle">
-        <Link to="/" className="middle_icon hover1 active">
-          <HomeActive />
+        <Link
+          to="/"
+          className={`middle_icon ${page === "home" ? "active" : "hover1"}`}
+          onClick={() => getAllPosts()}
+        >
+          {page === "home" ? (
+            <HomeActive color={color} />
+          ) : (
+            <Home color={color} />
+          )}
         </Link>
-        <Link to="/" className="middle_icon hover1">
-          <Friends color={color} />
+        <Link
+          to="/friends"
+          className={`middle_icon ${page === "friends" ? "active" : "hover1"}`}
+        >
+          {page === "friends" ? (
+            <FriendsActive color={color} />
+          ) : (
+            <Friends color={color} />
+          )}
         </Link>
         <Link to="/" className="middle_icon hover1">
           <Watch color={color} />
@@ -78,7 +97,12 @@ function Header() {
         </Link>
       </div>
       <div className="header_right">
-        <Link to="/profile" className="profile_link hover1">
+        <Link
+          to="/profile"
+          className={`profile_link hover1 ${
+            page === "profile" ? "active_link" : ""
+          }`}
+        >
           <img src={user?.picture} alt="" />
           <span>{user?.first_name}</span>
         </Link>

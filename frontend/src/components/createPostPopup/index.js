@@ -11,7 +11,13 @@ import PostError from "./PostError";
 import dataURItoBlob from "../../helpers/dataURItoBlob";
 import { uploadImages } from "../../functions/uploadImages";
 
-export default function CreatePostPopup({ user, setVisible }) {
+export default function CreatePostPopup({
+  user,
+  setVisible,
+  posts,
+  dispatch,
+  profile,
+}) {
   const [text, setText] = useState("");
   const [showPrev, setShowPrev] = useState(false);
   const [images, setImages] = useState([]);
@@ -39,7 +45,11 @@ export default function CreatePostPopup({ user, setVisible }) {
       );
       setLoading(false);
 
-      if (response === "ok") {
+      if (response.status === "ok") {
+        dispatch({
+          type: profile ? "PROFILE_POSTS" : "POSTS_SUCCESS",
+          payload: [response.data, ...posts],
+        });
         setBackground("");
         setText("");
         setVisible(false);
@@ -68,7 +78,11 @@ export default function CreatePostPopup({ user, setVisible }) {
         user.token
       );
       setLoading(false);
-      if (res === "ok") {
+      if (res.status === "ok") {
+        dispatch({
+          type: "POSTS_SUCCESS",
+          payload: [res.data, ...posts],
+        });
         setText("");
         setImages([]);
         setVisible(false);
@@ -87,7 +101,11 @@ export default function CreatePostPopup({ user, setVisible }) {
       );
       setLoading(false);
 
-      if (response === "ok") {
+      if (response.status === "ok") {
+        dispatch({
+          type: profile ? "PROFILE_POSTS" : "POSTS_SUCCESS",
+          payload: [response.data, ...posts],
+        });
         setBackground("");
         setText("");
         setVisible(false);
