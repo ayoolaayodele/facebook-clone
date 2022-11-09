@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
-
-const { ObjectId } = mongoose.Schema;
+const Schema = mongoose.Schema;
 
 const postSchema = new mongoose.Schema(
   {
@@ -16,13 +15,14 @@ const postSchema = new mongoose.Schema(
       type: Array,
     },
     user: {
-      type: ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: true,
     },
     background: {
       type: String,
     },
+
     comments: [
       {
         comment: {
@@ -32,7 +32,7 @@ const postSchema = new mongoose.Schema(
           type: String,
         },
         commentBy: {
-          type: ObjectId,
+          type: mongoose.Schema.Types.ObjectId,
           ref: "User",
         },
         commentAt: {
